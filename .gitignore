@@ -149,3 +149,59 @@ dist
 
 # Misc
 .DS_Store
+
+
+# Compiler files
+/foundry/cache/
+/foundry/out/
+
+# Ignores development broadcast logs
+/foundry/!/broadcast
+/foundry/broadcast/*/31337/
+/foundry/broadcast/**/dry-run/
+
+# Docs
+/foundry/docs/
+/foundry/lib
+/foundry/zkout
+
+# Dotenv file
+/foundry/.env
+
+.github
+.gitmodules
+
+/subgraph/generated/
+/subgraph/build/
+/subgraph/node_modules/
+/subgraph/package.json
+
+# Dependency directories
+/subgraph/jspm_packages/
+
+# Logs
+/subgraph/logs
+/subgraph/*.log
+/subgraph/npm-debug.log*
+/subgraph/yarn-debug.log*
+/subgraph/yarn-error.log*
+
+# Optional npm cache directory
+/subgraph/.npm
+
+# Optional eslint cache
+/subgraph/.eslintcache
+
+# dotenv environment variables file
+/subgraph/.env
+
+# Testing
+/subgraph/coverage
+/subgraph/coverage.json
+
+# Typechain
+/subgraph/typechain
+/subgraph/typechain-types
+
+# Hardhat files
+/subgraph/cache

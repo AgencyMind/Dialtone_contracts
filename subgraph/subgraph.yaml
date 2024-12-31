@@ -1,0 +1,55 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MemeDatabase
+    network: lens-testnet
+    source:
+      address: "0x5d00671DCb428279320b9b37F8615488A0f74c9d"
+      abi: MemeDatabase
+      startBlock: 111412
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - MemeAdded
+        - MemeDeleted
+      abis:
+        - name: MemeDatabase
+          file: ./abis/MemeDatabase.json
+      eventHandlers:
+        - event: MemeAdded(uint256,string)
+          handler: handleMemeAdded
+        - event: MemeDeleted(uint256)
+          handler: handleMemeDeleted
+      file: ./src/meme-database.ts
+  - kind: ethereum
+    name: SessionDatabase
+    network: lens-testnet
+    source:
+      address: "0x1B98E922909E416894CF72f33d4c1d5A4dF2cb5b"
+      abi: SessionDatabase
+      startBlock: 111412
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SessionAdded
+        - SessionDeleted
+        - SessionUpdated
+      abis:
+        - name: SessionDatabase
+          file: ./abis/SessionDatabase.json
+      eventHandlers:
+        - event: SessionAdded(uint256,string)
+          handler: handleSessionAdded
+        - event: SessionDeleted(uint256)
+          handler: handleSessionDeleted
+        - event: SessionUpdated(uint256,string)
+          handler: handleSessionUpdated
+      file: ./src/session-database.ts

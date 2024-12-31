@@ -1,0 +1,41 @@
+type MemeAdded @entity(immutable: true) {
+  id: Bytes!
+  sessionId: BigInt! # uint256
+  data: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MemeDeleted @entity(immutable: true) {
+  id: Bytes!
+  sessionId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type SessionAdded @entity(immutable: true) {
+  id: Bytes!
+  sessionId: BigInt! # uint256
+  encryptedData: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SessionDeleted @entity(immutable: true) {
+  id: Bytes!
+  sessionId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SessionUpdated @entity(immutable: true) {
+  id: Bytes!
+  sessionId: BigInt! # uint256
+  encryptedData: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

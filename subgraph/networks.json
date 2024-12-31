@@ -1,0 +1,11 @@
+{
+  "lens-testnet": {
+    "MemeDatabase": {
+      "address": "0x5d00671DCb428279320b9b37F8615488A0f74c9d",
+      "startBlock": 111412
+    },
+    "SessionDatabase": {
+      "address": "0x1B98E922909E416894CF72f33d4c1d5A4dF2cb5b"
+    }
+  }
+}
