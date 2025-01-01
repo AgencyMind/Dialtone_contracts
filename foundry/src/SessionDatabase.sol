@@ -7,6 +7,7 @@ import "./DialtoneErrors.sol";
 contract SessionDatabase {
     uint256 private _sessionCounter;
     mapping(uint256 => DialtoneLibrary.Session) private _allSessions;
+    mapping(address => string) private _ownerKeys;
 
     modifier onlySessionOwner(uint256 sessionId) {
         if (msg.sender != _allSessions[sessionId].owner) {
@@ -19,9 +20,16 @@ contract SessionDatabase {
     event SessionAdded(uint256 sessionId, string encryptedData);
     event SessionUpdated(uint256 sessionId, string encryptedData);
     event SessionDeleted(uint256 sessionId);
+    event OwnerKeySet(string encryptedKeys, address owner);
 
     constructor() payable {
         _sessionCounter = 0;
+    }
+
+    function ownerSetKeys(string memory encryptedKeys) external {
+        _ownerKeys[msg.sender] = encryptedKeys;
+
+        emit OwnerKeySet(encryptedKeys, msg.sender);
     }
 
     function addNewSession(string memory encryptedData) external {
@@ -68,5 +76,11 @@ contract SessionDatabase {
         uint256 sessionId
     ) public view returns (string memory) {
         return _allSessions[sessionId].encryptedData;
+    }
+
+    function getOwnerEncryptedKeys(
+        address owner
+    ) public view returns (string memory) {
+        return _ownerKeys[owner];
     }
 }
