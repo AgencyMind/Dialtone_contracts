@@ -1,20 +1,49 @@
-type MemeAdded @entity(immutable: true) {
+type MemeAdded @entity(immutable: false) {
   id: Bytes!
   sessionId: BigInt! # uint256
   data: String! # string
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  metadata: MemeMetadata
+  owner: Bytes!
+  token: Bytes!
 }
 
-type MemeDeleted @entity(immutable: true) {
+type MemeMetadata @entity(immutable: false) {
+  id: ID!
+  title: String
+  image: String
+  token: String
+  tags: String
+}
+
+type MemeDeleted @entity(immutable: false) {
   id: Bytes!
   sessionId: BigInt! # uint256
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
-type SessionAdded @entity(immutable: true) {
+type SessionAdded @entity(immutable: false) {
+  id: Bytes!
+  sessionId: BigInt! # uint256
+  encryptedData: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+  owner: Bytes!
+}
+
+type SessionDeleted @entity(immutable: false) {
+  id: Bytes!
+  sessionId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SessionUpdated @entity(immutable: false) {
   id: Bytes!
   sessionId: BigInt! # uint256
   encryptedData: String! # string
@@ -23,18 +52,10 @@ type SessionAdded @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type SessionDeleted @entity(immutable: true) {
+type OwnerKeySet @entity(immutable: false) {
   id: Bytes!
-  sessionId: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type SessionUpdated @entity(immutable: true) {
-  id: Bytes!
-  sessionId: BigInt! # uint256
-  encryptedData: String! # string
+  owner: Bytes!
+  encryptedKeys: String! # string
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

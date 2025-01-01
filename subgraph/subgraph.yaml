@@ -31,7 +31,7 @@ dataSources:
     name: SessionDatabase
     network: lens-testnet
     source:
-      address: "0x1B98E922909E416894CF72f33d4c1d5A4dF2cb5b"
+      address: "0x012902519C28FB6a473650d01329981284C866E4"
       abi: SessionDatabase
       startBlock: 111412
     mapping:
@@ -42,6 +42,7 @@ dataSources:
         - SessionAdded
         - SessionDeleted
         - SessionUpdated
+        - OwnerKeySet
       abis:
         - name: SessionDatabase
           file: ./abis/SessionDatabase.json
@@ -52,4 +53,19 @@ dataSources:
           handler: handleSessionDeleted
         - event: SessionUpdated(uint256,string)
           handler: handleSessionUpdated
+        - event: OwnerKeySet(string,address)
+          handler: handleOwnerKeySet
       file: ./src/session-database.ts
+templates:
+  - name: MemeMetadata
+    kind: file/ipfs
+    mapping:
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/ds-handlers.ts
+      handler: handleMemeMetadata
+      entities:
+        - MemeMetadata
+      abis:
+        - name: SessionDatabase
+          file: ./abis/SessionDatabase.json

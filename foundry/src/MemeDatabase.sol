@@ -8,8 +8,8 @@ contract MemeDatabase {
     uint256 private _memeCounter;
     mapping(uint256 => DialtoneLibrary.Meme) private _allMemes;
 
-    event MemeAdded(uint256 sessionId, string data);
-    event MemeDeleted(uint256 sessionId);
+    event MemeAdded(uint256 memeId, string data);
+    event MemeDeleted(uint256 memeId);
 
     modifier onlyMemeOwner(uint256 memeId) {
         if (msg.sender != _allMemes[memeId].owner) {
