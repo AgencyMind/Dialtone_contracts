@@ -8,14 +8,18 @@ type MemeAdded @entity(immutable: false) {
   metadata: MemeMetadata
   owner: Bytes!
   token: Bytes!
+  feed: Bytes!
+  symbol: String!
+  name: String!
+  workflows: [BigInt!]
 }
 
 type MemeMetadata @entity(immutable: false) {
   id: ID!
-  title: String
+  name: String
   image: String
-  token: String
-  tags: String
+  lore: String
+  symbol: String
 }
 
 type MemeDeleted @entity(immutable: false) {
@@ -56,6 +60,20 @@ type OwnerKeySet @entity(immutable: false) {
   id: Bytes!
   owner: Bytes!
   encryptedKeys: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MemeEdited @entity(immutable: false) {
+  id: Bytes!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WorkflowsAdded @entity(immutable: false) {
+  id: Bytes!
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

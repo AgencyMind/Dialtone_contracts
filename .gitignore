@@ -175,6 +175,7 @@ dist
 /subgraph/build/
 /subgraph/node_modules/
 /subgraph/package.json
+/subgraph/package-lock.json
 
 # Dependency directories
 /subgraph/jspm_packages/

@@ -14,20 +14,21 @@ export function handleMemeMetadata(content: Bytes): void {
     if (image && image.kind === JSONValueKind.STRING) {
       metadata.image = image.toString();
     }
-    let title = value.get("title");
-    if (title && title.kind === JSONValueKind.STRING) {
-      metadata.title = title.toString();
+    let name = value.get("name");
+    if (name && name.kind === JSONValueKind.STRING) {
+      metadata.name = name.toString();
     }
-    let token = value.get("token");
-    if (token && token.kind === JSONValueKind.STRING) {
-      metadata.token = token.toString();
+    let lore = value.get("lore");
+    if (lore && lore.kind === JSONValueKind.STRING) {
+      metadata.lore = lore.toString();
     }
 
-    let tags = value.get("tags");
-    if (tags && tags.kind === JSONValueKind.STRING) {
-      metadata.tags = tags.toString();
+    let symbol = value.get("symbol");
+    if (symbol && symbol.kind === JSONValueKind.STRING) {
+      metadata.symbol = symbol.toString();
     }
 
     metadata.save();
   }
 }
+

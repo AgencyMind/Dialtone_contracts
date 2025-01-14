@@ -8,7 +8,7 @@ dataSources:
     name: MemeDatabase
     network: lens-testnet
     source:
-      address: "0x5d00671DCb428279320b9b37F8615488A0f74c9d"
+      address: "0xa9af59DcDDFac01D3B51CC80982fe13EcDb0E0d6"
       abi: MemeDatabase
       startBlock: 111412
     mapping:
@@ -26,12 +26,16 @@ dataSources:
           handler: handleMemeAdded
         - event: MemeDeleted(uint256)
           handler: handleMemeDeleted
+        - event: MemeEdited(uint256)
+          handler: handleMemeEdited
+        - event: WorkflowsAdded(uint256)
+          handler: handleWorkflowsAdded
       file: ./src/meme-database.ts
   - kind: ethereum
     name: SessionDatabase
     network: lens-testnet
     source:
-      address: "0x012902519C28FB6a473650d01329981284C866E4"
+      address: "0xDb61Db77c257c986412a784B0BF0a8A84D712e77"
       abi: SessionDatabase
       startBlock: 111412
     mapping:

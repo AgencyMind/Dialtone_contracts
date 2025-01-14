@@ -19,7 +19,7 @@ export function handleSessionAdded(event: SessionAddedEvent): void {
   );
 
   let sessions = SessionDatabase.bind(
-    Address.fromString("0x012902519C28FB6a473650d01329981284C866E4")
+    Address.fromString("0xDb61Db77c257c986412a784B0BF0a8A84D712e77")
   );
 
   entity.sessionId = event.params.sessionId;

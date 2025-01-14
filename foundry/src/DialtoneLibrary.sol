@@ -8,8 +8,12 @@ contract DialtoneLibrary {
     }
 
     struct Meme {
+        uint256[] workflows;
         string data;
-        address memeToken;
+        string name;
+        string symbol;
+        address feed;
+        address token;
         address owner;
     }
 }
